@@ -1,0 +1,1 @@
+# wp-easy-translate
