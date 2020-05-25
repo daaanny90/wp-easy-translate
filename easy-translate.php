@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
  */
 add_filter( 'wp_insert_post_data', 'easytranslate_autotranslate', 99, 2 );
 if ( ! function_exists( 'easytranslate_autotranslate' ) ) {
-	function dannycode_autotranslate( $data, $postarr ) {
+	function easytranslate_autotranslate( $data, $postarr ) {
 		$yandex_copy = '<hr class="wp-block-separator">
 						<p>This text was written in Italian. The english translation is powered by <a href="http://translate.yandex.com">Yandex.Translate</a>.</p>';
 		$yandex_copy_clean = 'translation is powered by';
