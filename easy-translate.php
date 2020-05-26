@@ -53,7 +53,7 @@ if ( ! function_exists( 'easytranslate_autotranslate' ) ) {
 
 				// Add the Yandex copy only once
 				$copy = ( strpos( $data['post_content'], $yandex_copy_clean ) !== false ) ? true : false;
-				if ( ! $copy ) {
+				if ( ! $copy && ! $options['easytranslate_signature'] ) {
 					$data['post_content'] .= $yandex_copy;
 				}
 

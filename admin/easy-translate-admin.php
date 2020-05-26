@@ -74,6 +74,28 @@ function easytranslate_settings_init() {
 			'easytranslate_custom_data' => 'custom',
 		]
 	);
+
+	// Add section to hide the Yandex Signature
+	add_settings_section(
+		'easytranslate_section_signature',
+		__( 'Show/Hide Yandex signature', 'easytranslate' ),
+		'easytranslate_section_signature_input',
+		'easytranslate'
+	);
+
+	add_settings_field(
+		'easytranslate_signature',
+		__( 'Hide the Yandex copyright signature', 'easytranslate' ),
+		'easytranslate_field_signature',
+		'easytranslate',
+		'easytranslate_section_signature',
+		[
+			'label_for'                 => 'easytranslate_signature',
+			'class'                     => 'easytranslate_row',
+			'easytranslate_custom_data' => 'custom',
+		]
+	);
+
 }
 
 /**
@@ -147,6 +169,21 @@ function easytranslate_field_lang_2( $args ) {
 		?>
     </select>
 	<?php
+}
+
+function easytranslate_section_signature_input() {
+	echo '<p>' . _e( 'Be careful to hide the signature only if you are using a Yandex pro plan. If you hide the Yandex signature while using their free plan, you will go against their requirements for the use of translation results.', 'easytranslate' ) . '</p>';
+}
+
+function easytranslate_field_signature( $args ) {
+	$options = get_option( 'easytranslate_options' );
+	?>
+    <input id="<?php echo esc_attr( $args['label_for'] ); ?>"
+           type="checkbox"
+           name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+		<?php echo isset( $options[ $args['label_for'] ] ) ? 'checked="checked"' : ''; ?> />
+	<?php
+
 }
 
 /**
