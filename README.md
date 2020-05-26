@@ -1,9 +1,11 @@
 # Easy Translate WordPress Plugin
-Easy Translate allows you to write in your motherthongue and to publish your posts and pages already translated.
+Easy Translate allows you to write in your native language and to publish your posts and pages already translated.
 
 ## How it works
-The plugin works the free API of Yandex. Yandex has a free plan until 1.000.000 charachters/month.
-For a free-time blogger like me, is more than enough. If this limit is too thight for you, you can simply subscribe to their pro plan.
+The plugin works with the free API of Yandex.
+
+Yandex has a free plan until 1.000.000 characters/month.
+For a free-time blogger like me, is more than enough. If this limit is too tight for you, you can simply subscribe to their pro plan.
 
 The plugin consists in a simple filter hook, "wp_insert_post_data", that translates the post content and post title just before being saved into the database. This allow you to save your content already translated.
 
