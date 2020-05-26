@@ -23,7 +23,9 @@ From there you can set the plugin.
 From now, every post and page you will write, will magically posted translated.
 
 ## THIS IS STILL A WORK IN PROGRESS
-At the moment the plugin will only translate from italian to english. There is still a lot of work to do:
+I am a solo developer, so be kind and please open issues or make PRs to fix bugs or write better code.
+
+There is still a lot of work to do, if you would like to contribute:
 
 ### TO-DO
 - [x] Add other languages in settings menu
