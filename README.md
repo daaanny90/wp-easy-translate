@@ -8,7 +8,7 @@ Yandex has a **free plan** until **1.000.000** characters/day and **10.000.000**
 
 For a free-time blogger like me, is more than enough. If this limit is too tight for you, you can simply subscribe to their pro plan.
 
-The plugin consists in a simple filter hook, `wp_insert_post_data`, that translates the post content and post title just before being saved into the database. This allow you to save your content already translated.
+The plugin consists in a simple filter hook, `wp_insert_post_data`, that translates the post content, post title and post name (this means also the permalink) just before being saved into the database. This allow you to save your content already translated.
 
 ## Setting page
 Once installed and activated, a new menu item "Easy Translate" will appear in your admin sidebar.
@@ -30,7 +30,7 @@ There is still a lot of work to do, if you would like to contribute:
 
 ### TO-DO
 - [x] Add other languages in settings menu
-- [ ] Tranlsate also the permalink
+- [x] Tranlsate also the permalink
 - [x] Let the user choose if translate the post/page or not
 - [ ] Add translation review before publish
 - [ ] Add Google translate and Deepl API
