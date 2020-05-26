@@ -39,8 +39,8 @@ if ( ! function_exists( 'easytranslate_autotranslate' ) ) {
 	function easytranslate_autotranslate( $data, $postarr ) {
 		$metabox_translate = ( array_key_exists( 'easytranslate-metabox-translate', $_POST ) ) ? true : false;
 		$yandex_copy       = '<hr class="wp-block-separator">
-						<p>This text was written in Italian. The english translation is powered by <a href="http://translate.yandex.com">Yandex.Translate</a>.</p>';
-		$yandex_copy_clean = 'translation is powered by';
+						<p>Powered by <a href="http://translate.yandex.com">Yandex.Translate</a>.</p>';
+		$yandex_copy_clean = 'Powered by';
 
 		// Do not perform translation in customizer
 		if ( $data['post_type'] != 'customize_changeset' ) {
