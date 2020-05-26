@@ -41,6 +41,39 @@ function easytranslate_settings_init() {
 		]
 	);
 
+	// Add section to choose the languages
+	add_settings_section(
+		'easytranslate_section_lang',
+		__( 'Choose languages', 'easytranslate' ),
+		'easytranslate_section_lang_input',
+		'easytranslate'
+	);
+
+	add_settings_field(
+		'easytranslate_lang_1',
+		__( 'You will write your content in this language:', 'easytranslate' ),
+		'easytranslate_field_lang_1',
+		'easytranslate',
+		'easytranslate_section_lang',
+		[
+			'label_for'                 => 'easytranslate_lang_1',
+			'class'                     => 'easytranslate_row',
+			'easytranslate_custom_data' => 'custom',
+		]
+	);
+
+	add_settings_field(
+		'easytranslate_lang_2',
+		__( 'Content will be translated in this language:', 'easytranslate' ),
+		'easytranslate_field_lang_2',
+		'easytranslate',
+		'easytranslate_section_lang',
+		[
+			'label_for'                 => 'easytranslate_lang_2',
+			'class'                     => 'easytranslate_row',
+			'easytranslate_custom_data' => 'custom',
+		]
+	);
 }
 
 /**
@@ -51,7 +84,7 @@ add_action( 'admin_init', 'easytranslate_settings_init' );
 function easytranslate_section_api_input( $args ) {
 	?>
     <p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'The translations are powered by Yandex. You can get your free API key', 'easytranslate' ); ?>
-        <a href="https://translate.yandex.com/developers/keys"><?php esc_html_e('here', 'easytranslate'); ?></a>
+        <a href="https://translate.yandex.com/developers/keys"><?php esc_html_e( 'here', 'easytranslate' ); ?></a>
     </p>
 	<?php
 }
@@ -62,20 +95,59 @@ function easytranslate_field_api_input( $args ) {
     <input id="<?php echo esc_attr( $args['label_for'] ); ?>" type="text" placeholder="API Key"
            name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
            value="<?php echo isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : ''; ?>"
-           size="80" />
+           size="80"/>
 	<?php
 }
 
-function easytranslate_field_always_translate($args) {
-    $options = get_option('easytranslate_options');
-    ?>
-    <input id="<?php echo esc_attr($args['label_for']); ?>"
+function easytranslate_field_always_translate( $args ) {
+	$options = get_option( 'easytranslate_options' );
+	?>
+    <input id="<?php echo esc_attr( $args['label_for'] ); ?>"
            type="checkbox"
-           name="easytranslate_options[<?php echo esc_attr($args['label_for']); ?>]"
-            <?php echo isset( $options[ $args['label_for'] ] ) ? 'checked="checked"' : ''; ?> />
-    <?php
+           name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+		<?php echo isset( $options[ $args['label_for'] ] ) ? 'checked="checked"' : ''; ?> />
+	<?php
 }
 
+function easytranslate_section_lang_input() {
+	?>
+    <p><?php _e( 'Choose your language and the one you want to show', 'easytranslate' ) ?></p>
+	<?php
+}
+
+function easytranslate_field_lang_1( $args ) {
+	$options             = get_option( 'easytranslate_options' );
+	$languages           = new EasyTranslate\Classes\Language( $options );
+	$available_languages = $languages->getAvailableLanguages();
+	$selected            = isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : '';
+	?>
+    <select name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+            id="<?php echo esc_attr( $args['label_for'] ); ?>">
+		<?php
+		foreach ( $available_languages as $key => $language ) {
+			echo '<option value="' . $key . '" ' . selected( true, ( $key === $selected ), false ) . '>' . $language . '</option>';
+		}
+		?>
+    </select>
+	<?php
+}
+
+function easytranslate_field_lang_2( $args ) {
+	$options             = get_option( 'easytranslate_options' );
+	$languages           = new EasyTranslate\Classes\Language( $options );
+	$available_languages = $languages->getAvailableLanguages();
+	$selected            = isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : '';
+	?>
+    <select name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+            id="<?php echo esc_attr( $args['label_for'] ); ?>">
+		<?php
+		foreach ( $available_languages as $key => $language ) {
+			echo '<option value="' . $key . '" ' . selected( true, ( $key === $selected ), false ) . '>' . $language . '</option>';
+		}
+		?>
+    </select>
+	<?php
+}
 
 /**
  * top level menu

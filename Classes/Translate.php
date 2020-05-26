@@ -8,7 +8,7 @@ class Translate {
 	/**
 	 * @var string
 	 */
-	protected $yandex_api_key = '';
+	protected $yandex_api_key;
 	/**
 	 * @var string
 	 */
@@ -16,7 +16,16 @@ class Translate {
 	/**
 	 * @var string
 	 */
-	protected $lang = '&lang=it-en';
+	protected $lang = '&lang=';
+	/**
+	 * @var string
+	 */
+	protected $langFrom;
+	/**
+	 * @var string
+	 */
+	protected $langTo;
+
 	/**
 	 * @var string
 	 */
@@ -27,10 +36,12 @@ class Translate {
 	 *
 	 * @param $secrets array The options set into the settings panel
 	 */
-	public function __construct( $secrets ) {
+	public function __construct( array $secrets ) {
 		$api_key = $secrets['easytranslate_field_api'];
 
-		$this->yandex_api_key = $api_key;
+		$this->yandex_api_key = (string) $api_key;
+		$this->langFrom       = (string) $secrets['easytranslate_lang_1'];
+		$this->langTo         = (string) $secrets['easytranslate_lang_2'];
 	}
 
 	/**
@@ -60,7 +71,7 @@ class Translate {
 	 */
 	private function translate( $text ) {
 		$clean_text           = '&text=' . urlencode( $text );
-		$translation_request  = $this->yandex_url . $this->yandex_api_key . $clean_text . $this->lang . $this->format;
+		$translation_request  = $this->yandex_url . $this->yandex_api_key . $clean_text . $this->lang . $this->langFrom . '-' . $this->langTo . $this->format;
 		$translation_response = file_get_contents( $translation_request );
 		$json_response        = json_decode( $translation_response, true );
 		$translated_text      = $json_response['text'][0];
