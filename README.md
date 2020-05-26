@@ -21,7 +21,7 @@ At the moment the plugin will only translate from italian to english. There is s
 ### TO-DO
 - [ ] Add other languages in settings menu
 - [ ] Tranlsate also the permalink
-- [ ] Let the user choose if translate the post/page or not
+- [x] Let the user choose if translate the post/page or not
 
 ### BUGS
 - [ ] The filter is fired two times on publication
