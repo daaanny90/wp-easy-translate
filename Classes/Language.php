@@ -23,7 +23,7 @@ class Language {
 	public function __construct( array $secrets ) {
 		$api_key = $secrets['easytranslate_field_api'];
 
-		$this->yandex_api_key = $api_key;
+		$this->yandex_api_key = 'key=' . $api_key . '&';
 	}
 
 	/**

@@ -133,42 +133,46 @@ function easytranslate_field_always_translate( $args ) {
 
 function easytranslate_section_lang_input() {
 	?>
-    <p><?php _e( 'Choose your language and the one you want to show', 'easytranslate' ) ?></p>
+    <p><?php _e( 'Choose your language and the one you want to show (only available with an API key', 'easytranslate' ) ?></p>
 	<?php
 }
 
 function easytranslate_field_lang_1( $args ) {
-	$options             = get_option( 'easytranslate_options' );
-	$languages           = new EasyTranslate\Classes\Language( $options );
-	$available_languages = $languages->getAvailableLanguages();
-	$selected            = isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : '';
-	?>
-    <select name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
-            id="<?php echo esc_attr( $args['label_for'] ); ?>">
-		<?php
-		foreach ( $available_languages as $key => $language ) {
-			echo '<option value="' . $key . '" ' . selected( true, ( $key === $selected ), false ) . '>' . $language . '</option>';
-		}
+	$options = get_option( 'easytranslate_options' );
+	if ( isset( $options['easytranslate_field_api'] ) ) {
+		$languages           = new EasyTranslate\Classes\Language( $options );
+		$available_languages = $languages->getAvailableLanguages();
+		$selected            = isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : '';
 		?>
-    </select>
-	<?php
+        <select name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+                id="<?php echo esc_attr( $args['label_for'] ); ?>">
+			<?php
+			foreach ( $available_languages as $key => $language ) {
+				echo '<option value="' . $key . '" ' . selected( true, ( $key === $selected ), false ) . '>' . $language . '</option>';
+			}
+			?>
+        </select>
+		<?php
+	}
 }
 
 function easytranslate_field_lang_2( $args ) {
-	$options             = get_option( 'easytranslate_options' );
-	$languages           = new EasyTranslate\Classes\Language( $options );
-	$available_languages = $languages->getAvailableLanguages();
-	$selected            = isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : '';
-	?>
-    <select name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
-            id="<?php echo esc_attr( $args['label_for'] ); ?>">
-		<?php
-		foreach ( $available_languages as $key => $language ) {
-			echo '<option value="' . $key . '" ' . selected( true, ( $key === $selected ), false ) . '>' . $language . '</option>';
-		}
+	$options = get_option( 'easytranslate_options' );
+	if ( isset( $options['easytranslate_field_api'] ) ) {
+		$languages           = new EasyTranslate\Classes\Language( $options );
+		$available_languages = $languages->getAvailableLanguages();
+		$selected            = isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : '';
 		?>
-    </select>
-	<?php
+        <select name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+                id="<?php echo esc_attr( $args['label_for'] ); ?>">
+			<?php
+			foreach ( $available_languages as $key => $language ) {
+				echo '<option value="' . $key . '" ' . selected( true, ( $key === $selected ), false ) . '>' . $language . '</option>';
+			}
+			?>
+        </select>
+		<?php
+	}
 }
 
 function easytranslate_section_signature_input() {

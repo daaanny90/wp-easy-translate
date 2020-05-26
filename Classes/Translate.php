@@ -39,7 +39,7 @@ class Translate {
 	public function __construct( array $secrets ) {
 		$api_key = $secrets['easytranslate_field_api'];
 
-		$this->yandex_api_key = (string) $api_key;
+		$this->yandex_api_key = 'key=' . (string) $api_key . '&';
 		$this->langFrom       = (string) $secrets['easytranslate_lang_1'];
 		$this->langTo         = (string) $secrets['easytranslate_lang_2'];
 	}
