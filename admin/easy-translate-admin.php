@@ -27,6 +27,20 @@ function easytranslate_settings_init() {
 			'easytranslate_custom_data' => 'custom',
 		]
 	);
+
+	add_settings_field(
+		'easytranslate_always_translate',
+		__( 'Keep translation always activated', 'easytranslate' ),
+		'easytranslate_field_always_translate',
+		'easytranslate',
+		'easytranslate_section_api',
+		[
+			'label_for'                 => 'easytranslate_always_translate',
+			'class'                     => 'easytranslate_row',
+			'easytranslate_custom_data' => 'custom',
+		]
+	);
+
 }
 
 /**
@@ -51,6 +65,17 @@ function easytranslate_field_api_input( $args ) {
            size="80" />
 	<?php
 }
+
+function easytranslate_field_always_translate($args) {
+    $options = get_option('easytranslate_options');
+    ?>
+    <input id="<?php echo esc_attr($args['label_for']); ?>"
+           type="checkbox"
+           name="easytranslate_options[<?php echo esc_attr($args['label_for']); ?>]"
+            <?php echo isset( $options[ $args['label_for'] ] ) ? 'checked="checked"' : ''; ?> />
+    <?php
+}
+
 
 /**
  * top level menu
