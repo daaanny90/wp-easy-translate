@@ -38,4 +38,4 @@ There is still a lot of work to do, if you would like to contribute:
 ### BUGS
 - [ ] The filter is fired two times on publication
 - [ ] Customizer can't save changes
-- [ ] Can't manage media inside the post content
+- [ ] Can not manage media inside the post content
