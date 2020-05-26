@@ -2,12 +2,13 @@
 Easy translate allows you to write your content in your native language and to publish it in over 90 languages just pressing the publish button.
 
 ## How it works
-The plugin works with the free API of Yandex.
+The plugin works with the Yandex API.
 
-Yandex has a free plan until 1.000.000 characters/month.
+Yandex has a **free plan** until **1.000.000** characters/day and **10.000.000** characters/month.
+
 For a free-time blogger like me, is more than enough. If this limit is too tight for you, you can simply subscribe to their pro plan.
 
-The plugin consists in a simple filter hook, "wp_insert_post_data", that translates the post content and post title just before being saved into the database. This allow you to save your content already translated.
+The plugin consists in a simple filter hook, `wp_insert_post_data`, that translates the post content and post title just before being saved into the database. This allow you to save your content already translated.
 
 ## Setting page
 Once installed and activated, a new menu item "Easy Translate" will appear in your admin sidebar.
