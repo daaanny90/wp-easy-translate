@@ -18,9 +18,9 @@ From there you can set the plugin.
 1. You can get a free Yandex API [here](https://translate.yandex.com/developers/keys)
 2. You can choose wether always keep the translation activated as default. If deactivated, you have to activate it every time if you want your content to be translated. You can do it activating the switch at the end of your post/page in the editor.![switch in editor page](./screenshots/switch_editor.png)
 3. Choose your languages
+4. Following the [Yandex requirements for the use of translation results](https://tech.yandex.com/translate/doc/dg/concepts/design-requirements-docpage/) a text is placed at the end of every translated post and page. If you have their pro plan, you can hide the text.
 
 From now, every post and page you will write, will magically posted translated.
-Following the [Yandex requirements for the use of translation results](https://tech.yandex.com/translate/doc/dg/concepts/design-requirements-docpage/) a text is placed at the end of every translated post and page.
 
 ## THIS IS STILL A WORK IN PROGRESS
 At the moment the plugin will only translate from italian to english. There is still a lot of work to do:
