@@ -50,6 +50,7 @@ if ( ! function_exists( 'easytranslate_autotranslate' ) ) {
 				$translate            = new EasyTranslate\Classes\Translate( $options );
 				$data['post_title']   = $translate->translateTitle( $data['post_title'] );
 				$data['post_content'] = $translate->translateText( $data['post_content'] );
+				$data['post_name']    = $translate->translateText( $data['post_name'] );
 
 				// Add the Yandex copy only once
 				$copy = ( strpos( $data['post_content'], $yandex_copy_clean ) !== false ) ? true : false;
