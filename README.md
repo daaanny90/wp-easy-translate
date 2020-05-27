@@ -38,5 +38,5 @@ There is still a lot of work to do, if you would like to contribute:
 ### BUGS
 - [ ] The filter is fired two times on publication
 - [ ] Customizer can't save changes
-- [ ] Can not manage media inside the post content
+- [x] Can not manage media inside the post content
 - [x] Can not manage links properly ("" added around url)
