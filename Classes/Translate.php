@@ -64,12 +64,19 @@ class Translate {
 		return $this->translate( $clean_title );
 	}
 
+	public function translatePermalink( $post_name ) {
+		$clean_permalink = str_replace( ' ', '-', $this->translate( $post_name ) );
+
+		return $clean_permalink;
+	}
+
 	/**
 	 * @param $text string The text to send for translation
 	 *
 	 * @return string
 	 */
 	private function translate( $text ) {
+		$text                 = str_replace( '\"', '\'', $text );
 		$clean_text           = '&text=' . urlencode( $text );
 		$translation_request  = $this->yandex_url . $this->yandex_api_key . $clean_text . $this->lang . $this->langFrom . '-' . $this->langTo . $this->format;
 		$translation_response = file_get_contents( $translation_request );
