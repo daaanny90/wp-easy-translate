@@ -34,7 +34,7 @@ if ( ! function_exists( 'easytranslate_metabox_style' ) ) {
 /*
  * Modify the content and the title when the post is saved into the database
  */
-add_filter( 'wp_insert_post_data', 'easytranslate_autotranslate', 99, 2 );
+add_filter( 'wp_insert_post_data', 'easytranslate_autotranslate' , 10, 2 );
 if ( ! function_exists( 'easytranslate_autotranslate' ) ) {
 	function easytranslate_autotranslate( $data, $postarr ) {
 		$metabox_translate = ( array_key_exists( 'easytranslate-metabox-translate', $_POST ) ) ? true : false;
