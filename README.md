@@ -39,3 +39,4 @@ There is still a lot of work to do, if you would like to contribute:
 - [ ] The filter is fired two times on publication
 - [ ] Customizer can't save changes
 - [ ] Can not manage media inside the post content
+- [ ] Can not manage links properly ("" added around url)
