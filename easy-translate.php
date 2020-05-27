@@ -3,7 +3,7 @@
  * Plugin Name:       Easy Translate
  * Plugin URI:        https://dannyspina.com/blog/easy-translate
  * Description:       Easy translate allows you to write your content in your native language and to publish it in over 90 languages just pressing the publish button.
- * Version:           0.0.1
+ * Version:           1.0.0-beta
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Danny Spina
