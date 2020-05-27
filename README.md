@@ -36,6 +36,6 @@ There is still a lot of work to do, if you would like to contribute:
 - [ ] Add Google translate and Deepl API
 
 ### BUGS
-- [ ] Customizer can't save changes
+- [x] Customizer can't save changes
 - [x] Can not manage media inside the post content
 - [x] Can not manage links properly ("" added around url)
