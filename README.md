@@ -29,13 +29,5 @@ I am a solo developer, so be kind and please open issues or make PRs to fix bugs
 There is still a lot of work to do, if you would like to contribute:
 
 ### TO-DO
-- [x] Add other languages in settings menu
-- [x] Tranlsate also the permalink
-- [x] Let the user choose if translate the post/page or not
 - [ ] Add translation review before publish
 - [ ] Add Google translate and Deepl API
-
-### BUGS
-- [x] Customizer can't save changes
-- [x] Can not manage media inside the post content
-- [x] Can not manage links properly ("" added around url)
