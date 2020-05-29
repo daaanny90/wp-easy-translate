@@ -4,12 +4,17 @@
     let el = wp.element.createElement;
     let Button = wp.components.Button;
     const {select, dispatch} = wp.data;
+
+    // requests for translation
     let translateContent = new XMLHttpRequest();
     let translateTitle = new XMLHttpRequest();
+
+    // get saved options
     const apiKey = options.easytranslate_field_api;
     const langFrom = options.easytranslate_lang_1;
     const langTo = options.easytranslate_lang_2;
 
+    // requests for title and content (for the content the blocks must be reset)
     translateTitle.onload = function () {
         if (translateTitle.status >= 200 && translateTitle.status < 300) {
             let response = JSON.parse(translateTitle.response);

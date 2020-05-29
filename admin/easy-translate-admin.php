@@ -3,10 +3,9 @@
  * custom option and settings
  */
 function easytranslate_settings_init() {
-	// register a new setting for "easytranslate" page
 	register_setting( 'easytranslate', 'easytranslate_options' );
 
-	// register a new section in the "easytranslate" page
+	// Section API
 	add_settings_section(
 		'easytranslate_section_api',
 		__( 'Set your API Key', 'easytranslate' ),
@@ -14,7 +13,6 @@ function easytranslate_settings_init() {
 		'easytranslate'
 	);
 
-	// register a new field in the "easytranslate_section_developers" section, inside the "easytranslate" page
 	add_settings_field(
 		'easytranslate_field_api',
 		__( 'API Key', 'easytranslate' ),
@@ -28,20 +26,7 @@ function easytranslate_settings_init() {
 		]
 	);
 
-	add_settings_field(
-		'easytranslate_always_translate',
-		__( 'Keep translation always activated', 'easytranslate' ),
-		'easytranslate_field_always_translate',
-		'easytranslate',
-		'easytranslate_section_api',
-		[
-			'label_for'                 => 'easytranslate_always_translate',
-			'class'                     => 'easytranslate_row',
-			'easytranslate_custom_data' => 'custom',
-		]
-	);
-
-	// Add section to choose the languages
+	// Section languages
 	add_settings_section(
 		'easytranslate_section_lang',
 		__( 'Choose languages', 'easytranslate' ),
@@ -75,7 +60,7 @@ function easytranslate_settings_init() {
 		]
 	);
 
-	// Add section to hide the Yandex Signature
+	// Section Yandex Signature
 	add_settings_section(
 		'easytranslate_section_signature',
 		__( 'Show/Hide Yandex signature', 'easytranslate' ),
@@ -118,16 +103,6 @@ function easytranslate_field_api_input( $args ) {
            name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
            value="<?php echo isset( $options[ $args['label_for'] ] ) ? $options[ $args['label_for'] ] : ''; ?>"
            size="80"/>
-	<?php
-}
-
-function easytranslate_field_always_translate( $args ) {
-	$options = get_option( 'easytranslate_options' );
-	?>
-    <input id="<?php echo esc_attr( $args['label_for'] ); ?>"
-           type="checkbox"
-           name="easytranslate_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
-		<?php echo isset( $options[ $args['label_for'] ] ) ? 'checked="checked"' : ''; ?> />
 	<?php
 }
 
