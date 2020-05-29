@@ -200,7 +200,8 @@ function easytranslate_options_page() {
 		'Easy Translate',
 		'manage_options',
 		'easytranslate',
-		'easytranslate_options_page_html'
+		'easytranslate_options_page_html',
+		'dashicons-translation'
 	);
 }
 
