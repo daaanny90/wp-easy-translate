@@ -18,6 +18,7 @@ From there you can set the plugin.
 2. Choose your languages
 3. Following the [Yandex requirements for the use of translation results](https://tech.yandex.com/translate/doc/dg/concepts/design-requirements-docpage/) a text is placed at the end of every translated post and page. If you have their pro plan, you can hide the text.
 
+## Editor
 Now, in the editor you will see a new button next to "Publish":
 
 ![easytranslate button next in the editor](./screenshots/editor_button.png)
