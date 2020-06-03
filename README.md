@@ -1,5 +1,5 @@
 # Easy Translate WordPress Plugin
-Easy translate allows you to write your content in your native language and to publish it in over 90 languages just pressing the publish button.
+Easy translate allows you to write your content in your native language and to publish it in over 90 languages.
 
 ## How it works
 The plugin works with the Yandex API.
