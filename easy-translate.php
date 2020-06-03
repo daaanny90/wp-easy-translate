@@ -3,7 +3,7 @@
  * Plugin Name:       Easy Translate
  * Plugin URI:        https://dannyspina.com/blog/easy-translate
  * Description:       Easy translate allows you to write your content in your native language and to publish it in over 90 languages.
- * Version:           1.5.0-beta
+ * Version:           1.5.1-beta
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Danny Spina
@@ -61,12 +61,13 @@ if ( ! function_exists( 'easytranslate_sidebar_plugin_style_enqueue' ) ) {
 add_filter( 'wp_insert_post_data', 'easytranslate_autotranslate', 10, 2 );
 if ( ! function_exists( 'easytranslate_autotranslate' ) ) {
 	function easytranslate_autotranslate( $data, $postarr ) {
-		$yandex_copy       = '<hr class="wp-block-separator">
-						<p>Powered by <a href="http://translate.yandex.com">Yandex.Translate</a>.</p>';
+		$yandex_copy       = '<hr class="wp-block-separator"><p>Powered by <a href="http://translate.yandex.com">Yandex.Translate</a>.</p>';
 		$yandex_copy_clean = 'Powered by';
+		$is_post           = ( $data['post_type'] === 'post' );
+		$is_page           = ( $data['post_type'] === 'page' );
 
 		// Add signature only in post and pages
-		if ( $data['post_type'] != 'customize_changeset' ) {
+		if ( $is_post || $is_page ) {
 			$options = get_option( 'easytranslate_options' );
 			// Add signature only if is an update or a publication and an API key is saved
 			if ( $data['post_status'] != 'auto-draft' && $options['easytranslate_field_api'] ) {
