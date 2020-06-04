@@ -37,4 +37,5 @@ I am a solo developer, so please open issues or make PRs to fix bugs/improve cod
 There is still a lot of work to do, any help is appreciated:
 
 ### TO-DO
+- [ ] Change languages directly in editor overriding plugin settings if needed
 - [ ] Add Google translate and Deepl API
