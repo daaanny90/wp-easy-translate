@@ -1,23 +1,20 @@
 (function (wp) {
     // get all required elements from wordpress
-    const registerPlugin = wp.plugins.registerPlugin;
-    const PluginSidebar = wp.editPost.PluginSidebar;
-    const el = wp.element.createElement;
-    const {Button, SelectControl, CheckboxControl} = wp.components;
-    const {select, dispatch} = wp.data;
+    const registerPlugin            = wp.plugins.registerPlugin;
+    const PluginSidebar             = wp.editPost.PluginSidebar;
+    const el                        = wp.element.createElement;
+    const {Button, SelectControl}   = wp.components;
+    const {select, dispatch}        = wp.data;
 
     // requests to yandex
-    const translateContent = new XMLHttpRequest();
-    const translateTitle = new XMLHttpRequest();
-    const getLanguages = new XMLHttpRequest();
+    const translateContent  = new XMLHttpRequest();
+    const translateTitle    = new XMLHttpRequest();
+    const getLanguages      = new XMLHttpRequest();
 
     // get saved options
-    const apiKey = options.easytranslate_field_api;
-    let langFrom = options.easytranslate_lang_1;
-    let langTo = options.easytranslate_lang_2;
-
-    // Language list functionality
-    let overrideSettings;
+    const apiKey    = options.easytranslate_field_api;
+    let langFrom    = options.easytranslate_lang_1;
+    let langTo      = options.easytranslate_lang_2;
 
     // requests for title and content (for the content the blocks must be reset)
     translateTitle.onload = function () {
@@ -58,7 +55,10 @@
                 });
             }
         } else {
-            console.log(translateContent);
+            languageList.push({
+                label: 'Loading...',
+                value: 'ld'
+            });
         }
     };
     getLanguages.open('GET', 'https://translate.yandex.net/api/v1.5/tr.json/getLangs?' +
@@ -111,35 +111,34 @@
                 el('div',
                     {className: 'easytranslate-sidebar-languages'},
 
-                    // choose if override the main settings or choose new languages for this post
-                    el(CheckboxControl, {
-                        heading: 'User',
-                        label: 'Is Autor',
-                        help: 'Is the user a author or not?',
-                        onChange: function (checked) {
-                            overrideSettings = checked;
-                        }
-                    }),
-
                     // select to choose the language from
                     el(SelectControl, {
+                        className: 'LanguageFromSelect',
                         label: 'Language 1',
-                        value: 'value',
-                        options: [languageList],
-                        onChange: function (value) {
-                            console.log('language 1: ' + value)
+                        value: langFrom,
+                        options: languageList.map(option => ({label: option.label, value: option.value})),
+                        onChange: function (selectedItem) {
+                            langFrom = selectedItem;
                         }
                     }),
 
                     // language to choose the language to
                     el(SelectControl, {
-                        label: 'Language 1',
-                        value: 'value',
-                        options: [languageList],
-                        onChange: function (value) {
-                            console.log('language 2: ' + value)
+                        label: 'Language 2',
+                        value: langTo,
+                        options: languageList.map(option => ({label: option.label, value: option.value})),
+                        onChange: function (selectedItem) {
+                            langTo = selectedItem;
                         }
-                    })
+                    }),
+
+                    // invert language 1 with language 2
+                    el(Button, {
+                        isPrimary: true,
+                        onClick: function () {
+                            [langTo, langFrom] = [langFrom, langTo];
+                        }
+                    }, 'Invert')
                 )
             );
         },
